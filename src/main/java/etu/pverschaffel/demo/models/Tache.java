@@ -5,6 +5,7 @@ import etu.pverschaffel.demo.views.OperationView;
 import etu.pverschaffel.demo.views.TacheView;
 import etu.pverschaffel.demo.views.UtilisateurView;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,6 +31,7 @@ public class Tache {
     protected String nom;
 
     @JsonView(TacheView.class)
+    @DecimalMin(value = "0", inclusive = false, message = "Le temps doit être supérieur à 0")
     protected int temps;
 
     @OneToMany(mappedBy = "tache")
