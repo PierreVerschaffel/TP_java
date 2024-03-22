@@ -85,7 +85,7 @@ public class UtilisateurController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/utilisateur/{id}")
+    @DeleteMapping("/admin/utilisateur/{id}")
     @JsonView(UtilisateurView.class)
     public ResponseEntity<Utilisateur> delete(@PathVariable int id){
         Optional<Utilisateur> optionalUtilisateur = utilisateurDao.findById(id);
@@ -97,7 +97,7 @@ public class UtilisateurController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/utilisateur")
+    @PostMapping("/admin/utilisateur")
     @JsonView(UtilisateurView.class)
     public ResponseEntity<Utilisateur> create(@RequestBody @Valid Utilisateur utilisateur){
         utilisateur.setId(null);
@@ -105,7 +105,7 @@ public class UtilisateurController {
         return new ResponseEntity<>(utilisateur, HttpStatus.CREATED);
     }
 
-    @PutMapping("/utilisateur/{id}")
+    @PutMapping("/admin/utilisateur/{id}")
     @JsonView(UtilisateurView.class)
     public ResponseEntity<Utilisateur> update(@RequestBody @Valid Utilisateur utilisateur, @PathVariable int id){
         utilisateur.setId(id);

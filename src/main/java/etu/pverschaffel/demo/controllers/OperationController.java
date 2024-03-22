@@ -42,7 +42,7 @@ public class OperationController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/operation/{id}")
+    @DeleteMapping("/admin/operation/{id}")
     @JsonView(OperationView.class)
     public ResponseEntity<Operation> delete(@PathVariable int id){
         Optional<Operation> optionalOperation = operationDao.findById(id);
@@ -54,7 +54,7 @@ public class OperationController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/operation")
+    @PostMapping("/admin/operation")
     @JsonView(OperationView.class)
     public ResponseEntity<Operation> create(@RequestBody @Valid Operation operation){
         operation.setId(null);
@@ -62,7 +62,7 @@ public class OperationController {
         return new ResponseEntity<>(operation, HttpStatus.CREATED);
     }
 
-    @PutMapping("/operation/{id}")
+    @PutMapping("/admin/operation/{id}")
     @JsonView(OperationView.class)
     public ResponseEntity<Operation> update(@RequestBody @Valid Operation operation, @PathVariable int id){
         operation.setId(id);

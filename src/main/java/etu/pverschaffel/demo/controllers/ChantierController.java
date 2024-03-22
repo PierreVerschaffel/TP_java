@@ -42,7 +42,7 @@ public class ChantierController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/chantier/{id}")
+    @DeleteMapping("/admin/chantier/{id}")
     @JsonView(ChantierView.class)
     public ResponseEntity<Chantier> delete(@PathVariable int id){
         Optional<Chantier> optionalChantier = chantierDao.findById(id);
@@ -54,7 +54,7 @@ public class ChantierController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/chantier")
+    @PostMapping("/admin/chantier")
     @JsonView(ChantierView.class)
     public ResponseEntity<Chantier> create(@RequestBody @Valid Chantier chantier){
         chantier.setId(null);
@@ -62,7 +62,7 @@ public class ChantierController {
         return new ResponseEntity<>(chantier, HttpStatus.CREATED);
     }
 
-    @PutMapping("/chantier/{id}")
+    @PutMapping("/admin/chantier/{id}")
     @JsonView(ChantierView.class)
     public ResponseEntity<Chantier> update(@RequestBody @Valid Chantier chantier, @PathVariable int id){
         chantier.setId(id);

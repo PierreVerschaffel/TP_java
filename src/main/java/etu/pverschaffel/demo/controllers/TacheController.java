@@ -42,7 +42,7 @@ public class TacheController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/tache/{id}")
+    @DeleteMapping("/admin/tache/{id}")
     @JsonView(TacheView.class)
     public ResponseEntity<Tache> delete(@PathVariable int id){
         Optional<Tache> optionalTache = tacheDao.findById(id);
@@ -54,7 +54,7 @@ public class TacheController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/tache")
+    @PostMapping("/admin/tache")
     @JsonView(TacheView.class)
     public ResponseEntity<Tache> create(@RequestBody @Valid Tache tache){
         tache.setId(null);
@@ -62,7 +62,7 @@ public class TacheController {
         return new ResponseEntity<>(tache, HttpStatus.CREATED);
     }
 
-    @PutMapping("/tache/{id}")
+    @PutMapping("/admin/tache/{id}")
     @JsonView(TacheView.class)
     public ResponseEntity<Tache> update(@RequestBody @Valid Tache tache, @PathVariable int id){
         tache.setId(id);
@@ -89,4 +89,6 @@ public class TacheController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
+
+
 }

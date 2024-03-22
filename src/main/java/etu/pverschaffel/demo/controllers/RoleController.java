@@ -42,7 +42,7 @@ public class RoleController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/role/{id}")
+    @DeleteMapping("/admin/role/{id}")
     @JsonView(RoleView.class)
     public ResponseEntity<Role> delete(@PathVariable int id){
         Optional<Role> optionalRole = roleDao.findById(id);
@@ -54,7 +54,7 @@ public class RoleController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/role")
+    @PostMapping("/admin/role")
     @JsonView(RoleView.class)
     public ResponseEntity<Role> create(@RequestBody @Valid Role role){
         role.setId(null);
@@ -62,7 +62,7 @@ public class RoleController {
         return new ResponseEntity<>(role, HttpStatus.CREATED);
     }
 
-    @PutMapping("/role/{id}")
+    @PutMapping("/admin/role/{id}")
     @JsonView(RoleView.class)
     public ResponseEntity<Role> update(@RequestBody @Valid Role role, @PathVariable int id){
         role.setId(id);

@@ -42,7 +42,7 @@ public class ConsommableController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/consommable/{id}")
+    @DeleteMapping("/admin/consommable/{id}")
     @JsonView(ConsommableView.class)
     public ResponseEntity<Consommable> delete(@PathVariable int id){
         Optional<Consommable> optionalConsommable = consommableDao.findById(id);
@@ -54,7 +54,7 @@ public class ConsommableController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/consommable")
+    @PostMapping("/admin/consommable")
     @JsonView(ConsommableView.class)
     public ResponseEntity<Consommable> create(@RequestBody @Valid Consommable consommable){
         consommable.setId(null);
@@ -62,7 +62,7 @@ public class ConsommableController {
         return new ResponseEntity<>(consommable, HttpStatus.CREATED);
     }
 
-    @PutMapping("/consommable/{id}")
+    @PutMapping("/admin/consommable/{id}")
     @JsonView(ConsommableView.class)
     public ResponseEntity<Consommable> update(@RequestBody @Valid Consommable consommable, @PathVariable int id){
         consommable.setId(id);
