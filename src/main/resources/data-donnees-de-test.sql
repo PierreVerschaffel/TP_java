@@ -16,6 +16,9 @@ INSERT INTO tache (nom, temps) VALUES
 INSERT INTO consommable (nom) VALUES
                                  ("Pelle");
 
+INSERT INTO tache_consommable (consommable_id, tache_id) VALUES
+                                                          (1,1);
+
 INSERT INTO operation (nom, date, chantier_id, utilisateur_id, tache_id) VALUES
                                                         ("Creuser", "1999-02-03" ,1 , 2, 1),
                                                         ("Forer", "2012-11-15" ,2, 1, 1);

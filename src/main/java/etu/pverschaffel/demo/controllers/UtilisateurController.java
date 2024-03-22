@@ -1,7 +1,9 @@
 package etu.pverschaffel.demo.controllers;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import etu.pverschaffel.demo.dao.RoleDao;
 import etu.pverschaffel.demo.dao.UtilisateurDao;
+import etu.pverschaffel.demo.models.Role;
 import etu.pverschaffel.demo.models.Utilisateur;
 import etu.pverschaffel.demo.security.AppUserDetailsService;
 import etu.pverschaffel.demo.security.JwtUtils;
@@ -26,6 +28,9 @@ public class UtilisateurController {
     UtilisateurDao utilisateurDao;
 
     @Autowired
+    RoleDao roleDao;
+
+    @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
@@ -40,6 +45,11 @@ public class UtilisateurController {
     @PostMapping("/sign-in")
     public void signIn(@RequestBody Utilisateur utilisateur){
 
+        if (utilisateur.getRole().getId() == 1) {
+            utilisateur.setAdmin(true);
+        } else if (utilisateur.getRole().getId() == 2) {
+            utilisateur.setAdmin(false);
+        }
         utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword()));
 
         utilisateurDao.save(utilisateur);
