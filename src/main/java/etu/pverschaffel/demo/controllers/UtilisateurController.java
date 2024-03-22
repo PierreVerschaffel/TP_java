@@ -45,11 +45,10 @@ public class UtilisateurController {
     @PostMapping("/sign-in")
     public void signIn(@RequestBody Utilisateur utilisateur){
 
-        if (utilisateur.getRole().getId() == 1) {
-            utilisateur.setAdmin(true);
-        } else if (utilisateur.getRole().getId() == 2) {
-            utilisateur.setAdmin(false);
-        }
+        Role role = new Role();
+        role.setId(3);
+        utilisateur.setRole(role);
+
         utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword()));
 
         utilisateurDao.save(utilisateur);
