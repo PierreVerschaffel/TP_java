@@ -24,9 +24,8 @@ public class Operation {
     @JsonView(OperationView.class)
     protected Integer id;
 
-    @Column(unique = true, length = 50)
-    @Length(min = 3, max = 50, message = "Le nom doit avoir entre 3 et 50 caractères")
-    @NotNull(message = "Le nom est obligatoire")
+    @Length(min = 3, max = 50, message = "Le nom de l'opération à effectuer doit avoir entre 3 et 50 caractères")
+    @NotNull(message = "Le nom de l'opération est obligatoire")
     @JsonView({UtilisateurView.class, OperationView.class, ChantierView.class, TacheView.class})
     protected String nom;
 

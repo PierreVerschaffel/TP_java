@@ -22,8 +22,8 @@ public class Role {
     protected Integer id;
 
     @Column(unique = true, length = 50)
-    @Length(min = 3, max = 50, message = "Le nom doit avoir entre 3 et 50 caractères")
-    @NotNull(message = "Le nom est obligatoire")
+    @Length(min = 3, max = 50, message = "La désignation du rôle doit avoir entre 3 et 50 caractères")
+    @NotNull(message = "Le rôle est obligatoire")
     @JsonView({RoleView.class, UtilisateurView.class})
     protected String designation;
 

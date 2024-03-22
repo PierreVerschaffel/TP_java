@@ -6,6 +6,8 @@ import etu.pverschaffel.demo.views.TacheView;
 import etu.pverschaffel.demo.views.UtilisateurView;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,14 +26,13 @@ public class Tache {
     @JsonView(TacheView.class)
     protected Integer id;
 
-    @Column(unique = true, length = 50)
-    @Length(min = 3, max = 50, message = "Le nom doit avoir entre 3 et 50 caractères")
+    @Length(min = 3, max = 50, message = "Le nom de la tâche doit avoir entre 3 et 50 caractères")
     @NotNull(message = "Le nom est obligatoire")
     @JsonView({UtilisateurView.class, TacheView.class, OperationView.class})
     protected String nom;
 
     @JsonView(TacheView.class)
-    @DecimalMin(value = "0", inclusive = false, message = "Le temps doit être supérieur à 0")
+    @Min(value = 0, message = "Le temps de la tâche doit être supérieur à 0")
     protected int temps;
 
     @OneToMany(mappedBy = "tache")

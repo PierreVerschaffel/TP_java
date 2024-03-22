@@ -31,7 +31,6 @@ public class Utilisateur {
     @JsonView({UtilisateurView.class, ChantierView.class, OperationView.class, RoleView.class})
     protected String pseudo;
 
-//    @DecimalMin(value="0", inclusive = false, message = "Le prix doit être positif")
     @JsonView(UtilisateurView.class)
     protected String password;
 

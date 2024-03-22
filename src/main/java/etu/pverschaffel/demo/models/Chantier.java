@@ -23,9 +23,8 @@ public class Chantier {
     @JsonView(ChantierView.class)
     protected Integer id;
 
-    @Column(unique = true, length = 50)
-    @Length(min = 3, max = 50, message = "Le nom doit avoir entre 3 et 50 caractères")
-    @NotNull(message = "Le nom est obligatoire")
+    @Length(min = 3, max = 50, message = "Le nom du chantier doit avoir entre 3 et 50 caractères")
+    @NotNull(message = "Le nom du chantier est obligatoire")
     @JsonView({UtilisateurView.class, ChantierView.class, OperationView.class})
     protected String nom;
 
